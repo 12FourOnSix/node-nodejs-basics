@@ -19,7 +19,9 @@
     "streams:write": "node src/streams/write.js",
     "zip:compress": "node src/zip/compress.js",
     "zip:decompress": "node src/zip/decompress.js",
-    "modules": "node src/modules/cjsToEsm.mjs"
+    "modules": "node src/modules/cjsToEsm.mjs",
+    "wt:worker": "node src/wt/worker.mjs",
+    "wt:main": "node src/wt/main.mjs"
   },
   "repository": {
     "type": "git",
