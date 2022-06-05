@@ -4,7 +4,7 @@ import { createReadStream, createWriteStream } from 'fs';
 
 const 
   fileToZipPath = './src/zip/files/fileToCompress.txt',
-  zippedFilePath = './src/zip/files/archive.gz',
+  zippedFilePath = './src/zip/archive.gz',
   readStream = createReadStream(fileToZipPath),
   writeStream = createWriteStream(zippedFilePath),
   gzip = createGzip();
