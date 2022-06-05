@@ -18,7 +18,8 @@
     "streams:transform": "node src/streams/transform.js",
     "streams:write": "node src/streams/write.js",
     "zip:compress": "node src/zip/compress.js",
-    "zip:decompress": "node src/zip/decompress.js"
+    "zip:decompress": "node src/zip/decompress.js",
+    "modules": "node src/modules/cjsToEsm.mjs"
   },
   "repository": {
     "type": "git",
