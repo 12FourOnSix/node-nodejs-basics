@@ -1,15 +1,24 @@
 import { Worker } from 'worker_threads';
+import { cpus } from 'os';
 
 export const performCalculations = async () => {
-  const 
-    worker = new Worker('./src/wt/worker.js'),
-    number = 7;
+  let 
+    osNumber = cpus().length,
+    result = [];
 
-  worker.postMessage(number);
+  for (let i=0; i < osNumber; i++) {
+    const 
+      worker = new Worker('./src/wt/worker.js', { workerData: { id: i } }),
+      number = 10 + i;
 
-  worker.on('message', msg => {
-    console.log('Hi, it\'s main thread! \nThe result is: ', msg);
-  });
+    worker.postMessage(number);
+
+    worker.on('message', res_i => {
+      result[i] = res_i;
+
+      console.log(`result_${i}:`, result);
+    });
+  }
 };
 
 performCalculations();

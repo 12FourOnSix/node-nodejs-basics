@@ -4,9 +4,20 @@ import { parentPort } from 'worker_threads';
 export const nthFibonacci = (n) => n < 2 ? n : nthFibonacci(n - 1) + nthFibonacci(n - 2);
 
 export const sendResult = () => {
-  parentPort.on('message', n => {
-    const result = nthFibonacci(n);
-    parentPort.postMessage(result);
+  parentPort.on('message', number => {
+    const objToSend = {};
+
+    try {
+      objToSend['status'] = 'resolved';
+      objToSend['data'] = nthFibonacci(number);
+
+    } catch (err) {
+      objToSend['status'] = 'error';
+      objToSend['data'] = null;
+
+    } finally {
+      parentPort.postMessage(objToSend);
+    }
   });
 };
 
